@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBt-mm-KHX">
+                                <rect key="frame" x="16" y="172" width="343" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.58320651670000001" blue="0.58681896469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Insert Person">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="insertBtnAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZDc-RJ-6rj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BuI-E9-xYQ">
+                                <rect key="frame" x="16" y="244" width="343" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.58320651670000001" blue="0.58681896469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Update Person">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateBtnAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jDM-AT-ysI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9E-Xu-Tgp">
+                                <rect key="frame" x="16" y="314" width="343" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.58320651670000001" blue="0.58681896469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Delete Person">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteBtnAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fiM-jp-fEQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1j-mM-Bjd">
+                                <rect key="frame" x="16" y="384" width="343" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.58320651670000001" blue="0.58681896469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show Person">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showBtnAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gXV-wb-hJh"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyD-5X-nOo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FMDB test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ya9-wN-Umr">
+                                        <rect key="frame" x="140.5" y="20" width="94.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.58320651670000001" blue="0.58681896469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="ya9-wN-Umr" secondAttribute="centerX" constant="0.25" id="J1G-OL-Eml"/>
+                                    <constraint firstAttribute="height" constant="64" id="aw3-rX-7Ec"/>
+                                    <constraint firstAttribute="centerY" secondItem="ya9-wN-Umr" secondAttribute="centerY" constant="0.5" id="zUN-SF-SfH"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6h-5V-Z0M">
+                                <rect key="frame" x="16" y="454" width="343" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.58320651670000001" blue="0.58681896469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Create Table">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createBtnAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YLc-UN-Ysx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="C1j-mM-Bjd" firstAttribute="trailing" secondItem="n9E-Xu-Tgp" secondAttribute="trailing" id="2vd-Rv-tDD"/>
+                            <constraint firstItem="n9E-Xu-Tgp" firstAttribute="leading" secondItem="BuI-E9-xYQ" secondAttribute="leading" id="5Wq-eD-oIa"/>
+                            <constraint firstItem="n9E-Xu-Tgp" firstAttribute="top" secondItem="BuI-E9-xYQ" secondAttribute="bottom" constant="40" id="FFx-gY-sEg"/>
+                            <constraint firstItem="GBt-mm-KHX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="FIR-2b-x0S"/>
+                            <constraint firstAttribute="trailing" secondItem="MyD-5X-nOo" secondAttribute="trailing" id="FwU-EJ-gj6"/>
+                            <constraint firstItem="BuI-E9-xYQ" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="JTv-9L-ake"/>
+                            <constraint firstItem="q6h-5V-Z0M" firstAttribute="trailing" secondItem="C1j-mM-Bjd" secondAttribute="trailing" id="LYi-sb-Yuv"/>
+                            <constraint firstItem="MyD-5X-nOo" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="M26-GG-MQR"/>
+                            <constraint firstItem="BuI-E9-xYQ" firstAttribute="trailing" secondItem="n9E-Xu-Tgp" secondAttribute="trailing" id="MMh-LL-AkA"/>
+                            <constraint firstItem="MyD-5X-nOo" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="QI6-iP-M0c"/>
+                            <constraint firstItem="C1j-mM-Bjd" firstAttribute="top" secondItem="n9E-Xu-Tgp" secondAttribute="bottom" constant="40" id="TkQ-5L-bON"/>
+                            <constraint firstItem="GBt-mm-KHX" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="152" id="Vrc-OG-kc2"/>
+                            <constraint firstItem="BuI-E9-xYQ" firstAttribute="top" secondItem="GBt-mm-KHX" secondAttribute="bottom" constant="42" id="hI6-Y0-1KG"/>
+                            <constraint firstItem="GBt-mm-KHX" firstAttribute="trailing" secondItem="BuI-E9-xYQ" secondAttribute="trailing" id="pOB-Oe-JLc"/>
+                            <constraint firstItem="q6h-5V-Z0M" firstAttribute="leading" secondItem="C1j-mM-Bjd" secondAttribute="leading" id="pU4-cC-68O"/>
+                            <constraint firstItem="GBt-mm-KHX" firstAttribute="leading" secondItem="BuI-E9-xYQ" secondAttribute="leading" id="ryv-wI-zGv"/>
+                            <constraint firstItem="n9E-Xu-Tgp" firstAttribute="leading" secondItem="C1j-mM-Bjd" secondAttribute="leading" id="uNV-36-ZTg"/>
+                            <constraint firstItem="q6h-5V-Z0M" firstAttribute="top" secondItem="C1j-mM-Bjd" secondAttribute="bottom" constant="40" id="zL3-Kx-Yvb"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="374.5" y="348.5"/>
+        </scene>
+    </scenes>
+</document>
