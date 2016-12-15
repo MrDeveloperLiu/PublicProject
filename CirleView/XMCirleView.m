@@ -158,7 +158,7 @@ NSString *const XMCirleViewCache = @"XMCirleViewCache";
             
         }
         
-        [self layoutSubviews];
+        if (_layoutImageView) [self layoutSubviews];
     }else{
         XMAssertFalse(0, @"XMCirleView 'setImages:' 数组必须为 <UIImage *> 或者 <NSString *>");
     }
