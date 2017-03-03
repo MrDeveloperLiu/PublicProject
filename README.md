@@ -8,3 +8,6 @@ CoreGraphics 为大家演示了几个基于Graphics绘制的小栗子
 随后也将陆陆续续的上传一些小文件共大家使用
 
 # CirleView 轮播小控件
+- (void)test{
+    
+}
