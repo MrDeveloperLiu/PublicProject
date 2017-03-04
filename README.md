@@ -9,3 +9,7 @@ CoreGraphics 为大家演示了几个基于Graphics绘制的小栗子
 
 # CirleView 轮播小控件
 * [Link](https://www.baidu.com)
+
+```js
+- (void)test{}
+```
