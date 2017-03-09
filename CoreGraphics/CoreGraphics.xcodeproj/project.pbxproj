@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0C805C1E4B0280007C477A /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B0C805B1E4B0280007C477A /* 2.jpg */; };
 		CDE5D0391C637CF1000033DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE5D0381C637CF1000033DF /* main.m */; };
 		CDE5D0441C637CF1000033DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDE5D0431C637CF1000033DF /* Assets.xcassets */; };
 		CDE5D0471C637CF1000033DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDE5D0451C637CF1000033DF /* LaunchScreen.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B0C805B1E4B0280007C477A /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		CDE5D0341C637CF1000033DF /* CoreGraphics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreGraphics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE5D0381C637CF1000033DF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CDE5D0431C637CF1000033DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		CDE5D0361C637CF1000033DF /* CoreGraphics */ = {
 			isa = PBXGroup;
 			children = (
+				8B0C805B1E4B0280007C477A /* 2.jpg */,
 				CDFEF8331C6D8333001BE22D /* 1.png */,
 				CDFED8111C660495005B29D5 /* Helper.h */,
 				CDE5D0371C637CF1000033DF /* Supporting Files */,
@@ -253,6 +256,7 @@
 			files = (
 				CDFEF8341C6D8333001BE22D /* 1.png in Resources */,
 				CDE5D0471C637CF1000033DF /* LaunchScreen.storyboard in Resources */,
+				8B0C805C1E4B0280007C477A /* 2.jpg in Resources */,
 				CDE5D0441C637CF1000033DF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

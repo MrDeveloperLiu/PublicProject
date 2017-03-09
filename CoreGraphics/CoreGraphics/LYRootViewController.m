@@ -8,6 +8,7 @@
 
 #import "LYRootViewController.h"
 #import "QuartzView.h"
+#import "Helper.h"
 
 @interface LYRootViewController ()
 
