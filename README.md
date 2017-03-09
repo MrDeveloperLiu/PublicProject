@@ -22,3 +22,6 @@ interval:(NSTimeInterval)interval delegate:(id<XMCirleViewDelegate>)delegate;
 * 基于CoreText框架下的图文混排列工具, 图片的高是文字高度, 宽度由你定义
 * 支持添加视图
 * 支持链接等功能
+
+# XMAddressbook
+* 一个基于AddressBook框架的, ios获取手机通讯录的文件
