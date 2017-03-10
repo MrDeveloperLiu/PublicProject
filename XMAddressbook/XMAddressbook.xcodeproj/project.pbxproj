@@ -14,7 +14,7 @@
 		8B0366111E277B1E001BA154 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B03660F1E277B1E001BA154 /* LaunchScreen.storyboard */; };
 		8B03661C1E277B1E001BA154 /* XMAddressbookUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B03661B1E277B1E001BA154 /* XMAddressbookUITests.m */; };
 		8B0366281E277B53001BA154 /* XMAddressbookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0366271E277B53001BA154 /* XMAddressbookHelper.m */; };
-		8B0FF6FE1E723DF9005F9E8D /* XMToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF6FD1E723DF9005F9E8D /* XMToastView.m */; };
+		8B0FF6FE1E723DF9005F9E8D /* XMVoiceRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF6FD1E723DF9005F9E8D /* XMVoiceRecordManager.m */; };
 		8B0FF7011E723E7A005F9E8D /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF7001E723E7A005F9E8D /* UIView+Frame.m */; };
 		8B646C421E34A22E00CA4216 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B646C411E34A22E00CA4216 /* SearchResultViewController.m */; };
 		8BAA26621E4DAD920078FF8A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAA26611E4DAD920078FF8A /* RootViewController.m */; };
@@ -59,8 +59,8 @@
 		8B0C80761E4C787B007C477A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		8B0C80781E4C7880007C477A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B0C807A1E4C7885007C477A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		8B0FF6FC1E723DF9005F9E8D /* XMToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMToastView.h; sourceTree = "<group>"; };
-		8B0FF6FD1E723DF9005F9E8D /* XMToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMToastView.m; sourceTree = "<group>"; };
+		8B0FF6FC1E723DF9005F9E8D /* XMVoiceRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMVoiceRecordManager.h; sourceTree = "<group>"; };
+		8B0FF6FD1E723DF9005F9E8D /* XMVoiceRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMVoiceRecordManager.m; sourceTree = "<group>"; };
 		8B0FF6FF1E723E7A005F9E8D /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		8B0FF7001E723E7A005F9E8D /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		8B646C401E34A22E00CA4216 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
@@ -192,8 +192,8 @@
 			children = (
 				8B0FF6FF1E723E7A005F9E8D /* UIView+Frame.h */,
 				8B0FF7001E723E7A005F9E8D /* UIView+Frame.m */,
-				8B0FF6FC1E723DF9005F9E8D /* XMToastView.h */,
-				8B0FF6FD1E723DF9005F9E8D /* XMToastView.m */,
+				8B0FF6FC1E723DF9005F9E8D /* XMVoiceRecordManager.h */,
+				8B0FF6FD1E723DF9005F9E8D /* XMVoiceRecordManager.m */,
 			);
 			path = toast;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				8BAA26621E4DAD920078FF8A /* RootViewController.m in Sources */,
 				8B0FF7011E723E7A005F9E8D /* UIView+Frame.m in Sources */,
 				8BCA2B901E51892D00C589EE /* XMPersonalInformationViewController.m in Sources */,
-				8B0FF6FE1E723DF9005F9E8D /* XMToastView.m in Sources */,
+				8B0FF6FE1E723DF9005F9E8D /* XMVoiceRecordManager.m in Sources */,
 				8BC526201E28F3F600180172 /* DetialViewController.m in Sources */,
 				8B0366061E277B1E001BA154 /* AppDelegate.m in Sources */,
 				8BCA2B8F1E51892D00C589EE /* XMPerosnalInfoBaseCell.m in Sources */,

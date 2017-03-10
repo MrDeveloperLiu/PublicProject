@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "XMPersonalInformationViewController.h"
-#import "XMToastView.h"
+#import "XMVoiceRecordManager.h"
 
 @interface RootViewController ()
 {
