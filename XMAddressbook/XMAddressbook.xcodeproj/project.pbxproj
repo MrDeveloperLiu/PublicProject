@@ -1,0 +1,549 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B0366031E277B1E001BA154 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0366021E277B1E001BA154 /* main.m */; };
+		8B0366061E277B1E001BA154 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0366051E277B1E001BA154 /* AppDelegate.m */; };
+		8B0366091E277B1E001BA154 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0366081E277B1E001BA154 /* ViewController.m */; };
+		8B03660E1E277B1E001BA154 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B03660D1E277B1E001BA154 /* Assets.xcassets */; };
+		8B0366111E277B1E001BA154 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B03660F1E277B1E001BA154 /* LaunchScreen.storyboard */; };
+		8B03661C1E277B1E001BA154 /* XMAddressbookUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B03661B1E277B1E001BA154 /* XMAddressbookUITests.m */; };
+		8B0366281E277B53001BA154 /* XMAddressbookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0366271E277B53001BA154 /* XMAddressbookHelper.m */; };
+		8B0FF6FE1E723DF9005F9E8D /* XMToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF6FD1E723DF9005F9E8D /* XMToastView.m */; };
+		8B0FF7011E723E7A005F9E8D /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF7001E723E7A005F9E8D /* UIView+Frame.m */; };
+		8B646C421E34A22E00CA4216 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B646C411E34A22E00CA4216 /* SearchResultViewController.m */; };
+		8BAA26621E4DAD920078FF8A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAA26611E4DAD920078FF8A /* RootViewController.m */; };
+		8BC526161E287B3800180172 /* AddressbookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC526151E287B3800180172 /* AddressbookCell.m */; };
+		8BC5261D1E28E4EB00180172 /* NSObject+RoundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5261C1E28E4EB00180172 /* NSObject+RoundImage.m */; };
+		8BC526201E28F3F600180172 /* DetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5261F1E28F3F600180172 /* DetialViewController.m */; };
+		8BCA2B8E1E51892D00C589EE /* XMGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA2B851E51892D00C589EE /* XMGradientView.m */; };
+		8BCA2B8F1E51892D00C589EE /* XMPerosnalInfoBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA2B871E51892D00C589EE /* XMPerosnalInfoBaseCell.m */; };
+		8BCA2B901E51892D00C589EE /* XMPersonalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA2B891E51892D00C589EE /* XMPersonalInformationViewController.m */; };
+		8BCA2B911E51892D00C589EE /* XMPersonalInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA2B8B1E51892D00C589EE /* XMPersonalInfoViewModel.m */; };
+		8BCA2B921E51892D00C589EE /* XMResizeableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA2B8D1E51892D00C589EE /* XMResizeableButton.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8B0366181E277B1E001BA154 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B0365F61E277B1E001BA154 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B0365FD1E277B1E001BA154;
+			remoteInfo = XMAddressbook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8B0365FE1E277B1E001BA154 /* XMAddressbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMAddressbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B0366021E277B1E001BA154 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8B0366041E277B1E001BA154 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8B0366051E277B1E001BA154 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8B0366071E277B1E001BA154 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8B0366081E277B1E001BA154 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8B03660D1E277B1E001BA154 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B0366101E277B1E001BA154 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8B0366121E277B1E001BA154 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B0366171E277B1E001BA154 /* XMAddressbookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMAddressbookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B03661B1E277B1E001BA154 /* XMAddressbookUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XMAddressbookUITests.m; sourceTree = "<group>"; };
+		8B03661D1E277B1E001BA154 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B0366261E277B53001BA154 /* XMAddressbookHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAddressbookHelper.h; sourceTree = "<group>"; };
+		8B0366271E277B53001BA154 /* XMAddressbookHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAddressbookHelper.m; sourceTree = "<group>"; };
+		8B0366291E2875AD001BA154 /* UIViewMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewMacro.h; sourceTree = "<group>"; };
+		8B0C80721E4C783C007C477A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8B0C80741E4C7878007C477A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		8B0C80761E4C787B007C477A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		8B0C80781E4C7880007C477A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8B0C807A1E4C7885007C477A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8B0FF6FC1E723DF9005F9E8D /* XMToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMToastView.h; sourceTree = "<group>"; };
+		8B0FF6FD1E723DF9005F9E8D /* XMToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMToastView.m; sourceTree = "<group>"; };
+		8B0FF6FF1E723E7A005F9E8D /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		8B0FF7001E723E7A005F9E8D /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		8B646C401E34A22E00CA4216 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
+		8B646C411E34A22E00CA4216 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
+		8BAA26601E4DAD920078FF8A /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		8BAA26611E4DAD920078FF8A /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		8BC526141E287B3800180172 /* AddressbookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressbookCell.h; sourceTree = "<group>"; };
+		8BC526151E287B3800180172 /* AddressbookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressbookCell.m; sourceTree = "<group>"; };
+		8BC5261B1E28E4EB00180172 /* NSObject+RoundImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+RoundImage.h"; sourceTree = "<group>"; };
+		8BC5261C1E28E4EB00180172 /* NSObject+RoundImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RoundImage.m"; sourceTree = "<group>"; };
+		8BC5261E1E28F3F600180172 /* DetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetialViewController.h; sourceTree = "<group>"; };
+		8BC5261F1E28F3F600180172 /* DetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetialViewController.m; sourceTree = "<group>"; };
+		8BCA2B841E51892D00C589EE /* XMGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGradientView.h; sourceTree = "<group>"; };
+		8BCA2B851E51892D00C589EE /* XMGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGradientView.m; sourceTree = "<group>"; };
+		8BCA2B861E51892D00C589EE /* XMPerosnalInfoBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPerosnalInfoBaseCell.h; sourceTree = "<group>"; };
+		8BCA2B871E51892D00C589EE /* XMPerosnalInfoBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPerosnalInfoBaseCell.m; sourceTree = "<group>"; };
+		8BCA2B881E51892D00C589EE /* XMPersonalInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPersonalInformationViewController.h; sourceTree = "<group>"; };
+		8BCA2B891E51892D00C589EE /* XMPersonalInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPersonalInformationViewController.m; sourceTree = "<group>"; };
+		8BCA2B8A1E51892D00C589EE /* XMPersonalInfoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPersonalInfoViewModel.h; sourceTree = "<group>"; };
+		8BCA2B8B1E51892D00C589EE /* XMPersonalInfoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPersonalInfoViewModel.m; sourceTree = "<group>"; };
+		8BCA2B8C1E51892D00C589EE /* XMResizeableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMResizeableButton.h; sourceTree = "<group>"; };
+		8BCA2B8D1E51892D00C589EE /* XMResizeableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMResizeableButton.m; sourceTree = "<group>"; };
+		8BEA23E31E4D4B5900E9DFB4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		8BEA23E51E4D4B7300E9DFB4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		8BFCD0041E4D4E3300FE0F99 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8B0365FB1E277B1E001BA154 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B0366141E277B1E001BA154 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8B0365F51E277B1E001BA154 = {
+			isa = PBXGroup;
+			children = (
+				8B0366001E277B1E001BA154 /* XMAddressbook */,
+				8B03661A1E277B1E001BA154 /* XMAddressbookUITests */,
+				8B0365FF1E277B1E001BA154 /* Products */,
+				8B0C80711E4C783C007C477A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8B0365FF1E277B1E001BA154 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B0365FE1E277B1E001BA154 /* XMAddressbook.app */,
+				8B0366171E277B1E001BA154 /* XMAddressbookUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B0366001E277B1E001BA154 /* XMAddressbook */ = {
+			isa = PBXGroup;
+			children = (
+				8B0FF6FB1E723DF9005F9E8D /* toast */,
+				8BCA2B831E51892D00C589EE /* NewXMPersonalInfo */,
+				8BFCD0041E4D4E3300FE0F99 /* PrefixHeader.pch */,
+				8BC5261B1E28E4EB00180172 /* NSObject+RoundImage.h */,
+				8BC5261C1E28E4EB00180172 /* NSObject+RoundImage.m */,
+				8BC5261E1E28F3F600180172 /* DetialViewController.h */,
+				8BC5261F1E28F3F600180172 /* DetialViewController.m */,
+				8BC526141E287B3800180172 /* AddressbookCell.h */,
+				8BC526151E287B3800180172 /* AddressbookCell.m */,
+				8B0366041E277B1E001BA154 /* AppDelegate.h */,
+				8B0366051E277B1E001BA154 /* AppDelegate.m */,
+				8B646C401E34A22E00CA4216 /* SearchResultViewController.h */,
+				8B646C411E34A22E00CA4216 /* SearchResultViewController.m */,
+				8B0366071E277B1E001BA154 /* ViewController.h */,
+				8B0366081E277B1E001BA154 /* ViewController.m */,
+				8BAA26601E4DAD920078FF8A /* RootViewController.h */,
+				8BAA26611E4DAD920078FF8A /* RootViewController.m */,
+				8B03660D1E277B1E001BA154 /* Assets.xcassets */,
+				8B0366291E2875AD001BA154 /* UIViewMacro.h */,
+				8B03660F1E277B1E001BA154 /* LaunchScreen.storyboard */,
+				8B0366121E277B1E001BA154 /* Info.plist */,
+				8B0366011E277B1E001BA154 /* Supporting Files */,
+				8B0366261E277B53001BA154 /* XMAddressbookHelper.h */,
+				8B0366271E277B53001BA154 /* XMAddressbookHelper.m */,
+			);
+			path = XMAddressbook;
+			sourceTree = "<group>";
+		};
+		8B0366011E277B1E001BA154 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B0366021E277B1E001BA154 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8B03661A1E277B1E001BA154 /* XMAddressbookUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8B03661B1E277B1E001BA154 /* XMAddressbookUITests.m */,
+				8B03661D1E277B1E001BA154 /* Info.plist */,
+			);
+			path = XMAddressbookUITests;
+			sourceTree = "<group>";
+		};
+		8B0C80711E4C783C007C477A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BEA23E51E4D4B7300E9DFB4 /* CoreVideo.framework */,
+				8BEA23E31E4D4B5900E9DFB4 /* CoreImage.framework */,
+				8B0C807A1E4C7885007C477A /* UIKit.framework */,
+				8B0C80781E4C7880007C477A /* Foundation.framework */,
+				8B0C80761E4C787B007C477A /* AddressBookUI.framework */,
+				8B0C80741E4C7878007C477A /* AddressBook.framework */,
+				8B0C80721E4C783C007C477A /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B0FF6FB1E723DF9005F9E8D /* toast */ = {
+			isa = PBXGroup;
+			children = (
+				8B0FF6FF1E723E7A005F9E8D /* UIView+Frame.h */,
+				8B0FF7001E723E7A005F9E8D /* UIView+Frame.m */,
+				8B0FF6FC1E723DF9005F9E8D /* XMToastView.h */,
+				8B0FF6FD1E723DF9005F9E8D /* XMToastView.m */,
+			);
+			path = toast;
+			sourceTree = "<group>";
+		};
+		8BCA2B831E51892D00C589EE /* NewXMPersonalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				8BCA2B841E51892D00C589EE /* XMGradientView.h */,
+				8BCA2B851E51892D00C589EE /* XMGradientView.m */,
+				8BCA2B861E51892D00C589EE /* XMPerosnalInfoBaseCell.h */,
+				8BCA2B871E51892D00C589EE /* XMPerosnalInfoBaseCell.m */,
+				8BCA2B881E51892D00C589EE /* XMPersonalInformationViewController.h */,
+				8BCA2B891E51892D00C589EE /* XMPersonalInformationViewController.m */,
+				8BCA2B8A1E51892D00C589EE /* XMPersonalInfoViewModel.h */,
+				8BCA2B8B1E51892D00C589EE /* XMPersonalInfoViewModel.m */,
+				8BCA2B8C1E51892D00C589EE /* XMResizeableButton.h */,
+				8BCA2B8D1E51892D00C589EE /* XMResizeableButton.m */,
+			);
+			path = NewXMPersonalInfo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8B0365FD1E277B1E001BA154 /* XMAddressbook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B0366201E277B1E001BA154 /* Build configuration list for PBXNativeTarget "XMAddressbook" */;
+			buildPhases = (
+				8B0365FA1E277B1E001BA154 /* Sources */,
+				8B0365FB1E277B1E001BA154 /* Frameworks */,
+				8B0365FC1E277B1E001BA154 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XMAddressbook;
+			productName = XMAddressbook;
+			productReference = 8B0365FE1E277B1E001BA154 /* XMAddressbook.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8B0366161E277B1E001BA154 /* XMAddressbookUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B0366231E277B1E001BA154 /* Build configuration list for PBXNativeTarget "XMAddressbookUITests" */;
+			buildPhases = (
+				8B0366131E277B1E001BA154 /* Sources */,
+				8B0366141E277B1E001BA154 /* Frameworks */,
+				8B0366151E277B1E001BA154 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B0366191E277B1E001BA154 /* PBXTargetDependency */,
+			);
+			name = XMAddressbookUITests;
+			productName = XMAddressbookUITests;
+			productReference = 8B0366171E277B1E001BA154 /* XMAddressbookUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8B0365F61E277B1E001BA154 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = MrDevelopLiu;
+				TargetAttributes = {
+					8B0365FD1E277B1E001BA154 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = LESEXUKLEU;
+						ProvisioningStyle = Automatic;
+					};
+					8B0366161E277B1E001BA154 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = QAUYH3X4LP;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8B0365FD1E277B1E001BA154;
+					};
+				};
+			};
+			buildConfigurationList = 8B0365F91E277B1E001BA154 /* Build configuration list for PBXProject "XMAddressbook" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8B0365F51E277B1E001BA154;
+			productRefGroup = 8B0365FF1E277B1E001BA154 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8B0365FD1E277B1E001BA154 /* XMAddressbook */,
+				8B0366161E277B1E001BA154 /* XMAddressbookUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B0365FC1E277B1E001BA154 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B0366111E277B1E001BA154 /* LaunchScreen.storyboard in Resources */,
+				8B03660E1E277B1E001BA154 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B0366151E277B1E001BA154 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B0365FA1E277B1E001BA154 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BC526161E287B3800180172 /* AddressbookCell.m in Sources */,
+				8BCA2B8E1E51892D00C589EE /* XMGradientView.m in Sources */,
+				8B0366091E277B1E001BA154 /* ViewController.m in Sources */,
+				8BC5261D1E28E4EB00180172 /* NSObject+RoundImage.m in Sources */,
+				8BCA2B911E51892D00C589EE /* XMPersonalInfoViewModel.m in Sources */,
+				8B646C421E34A22E00CA4216 /* SearchResultViewController.m in Sources */,
+				8BCA2B921E51892D00C589EE /* XMResizeableButton.m in Sources */,
+				8BAA26621E4DAD920078FF8A /* RootViewController.m in Sources */,
+				8B0FF7011E723E7A005F9E8D /* UIView+Frame.m in Sources */,
+				8BCA2B901E51892D00C589EE /* XMPersonalInformationViewController.m in Sources */,
+				8B0FF6FE1E723DF9005F9E8D /* XMToastView.m in Sources */,
+				8BC526201E28F3F600180172 /* DetialViewController.m in Sources */,
+				8B0366061E277B1E001BA154 /* AppDelegate.m in Sources */,
+				8BCA2B8F1E51892D00C589EE /* XMPerosnalInfoBaseCell.m in Sources */,
+				8B0366281E277B53001BA154 /* XMAddressbookHelper.m in Sources */,
+				8B0366031E277B1E001BA154 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B0366131E277B1E001BA154 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B03661C1E277B1E001BA154 /* XMAddressbookUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8B0366191E277B1E001BA154 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B0365FD1E277B1E001BA154 /* XMAddressbook */;
+			targetProxy = 8B0366181E277B1E001BA154 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8B03660F1E277B1E001BA154 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B0366101E277B1E001BA154 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8B03661E1E277B1E001BA154 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8B03661F1E277B1E001BA154 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8B0366211E277B1E001BA154 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LESEXUKLEU;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = XMAddressbook/PrefixHeader.pch;
+				INFOPLIST_FILE = XMAddressbook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.feinno.XMSipSDKDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8B0366221E277B1E001BA154 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LESEXUKLEU;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = XMAddressbook/PrefixHeader.pch;
+				INFOPLIST_FILE = XMAddressbook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.feinno.XMSipSDKDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8B0366241E277B1E001BA154 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = QAUYH3X4LP;
+				INFOPLIST_FILE = XMAddressbookUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.feinno.XMAddressbookUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = XMAddressbook;
+			};
+			name = Debug;
+		};
+		8B0366251E277B1E001BA154 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = QAUYH3X4LP;
+				INFOPLIST_FILE = XMAddressbookUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.feinno.XMAddressbookUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = XMAddressbook;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8B0365F91E277B1E001BA154 /* Build configuration list for PBXProject "XMAddressbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B03661E1E277B1E001BA154 /* Debug */,
+				8B03661F1E277B1E001BA154 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B0366201E277B1E001BA154 /* Build configuration list for PBXNativeTarget "XMAddressbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B0366211E277B1E001BA154 /* Debug */,
+				8B0366221E277B1E001BA154 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B0366231E277B1E001BA154 /* Build configuration list for PBXNativeTarget "XMAddressbookUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B0366241E277B1E001BA154 /* Debug */,
+				8B0366251E277B1E001BA154 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8B0365F61E277B1E001BA154 /* Project object */;
+}
