@@ -3,9 +3,12 @@
 
 @interface XMAttributeLabel : UIView
 
+@property (nonatomic, assign, readonly) CGFloat fontAscent;
+@property (nonatomic, assign, readonly) CGFloat fontDescent;
+
 @property (nonatomic, weak) id<XMAttributeLabelProtocol> delegate;
 /**
- *  the text font default is 20.0f
+ *  the text font default is 16.0f
  */
 @property (nonatomic, strong) UIFont *font;
 /**
@@ -50,6 +53,11 @@
 - (void)appendText:(NSString *)text;
 - (void)appendAttributeText:(NSAttributedString *)attributeText;
 - (void)appendItem:(XMAttributeItem *)item;
+
+//for emoji remember that if you will auto detect links and also auto detect emoji, you use this before
+//or it will cause some problem
+- (void)resetEmojiWithItem:(XMAttributeItem *)item;
+- (void)resetLinkWithItem:(XMAttributeItem *)item;
 
 @end
 

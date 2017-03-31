@@ -12,8 +12,8 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
 @interface XMAttributeLabel()
 
 @property (nonatomic, strong) XMAttributeItem *acticeItem;
-@property (nonatomic, assign) CGFloat fontAscent;
-@property (nonatomic, assign) CGFloat fontDescent;
+@property (nonatomic, assign, readwrite) CGFloat fontAscent;
+@property (nonatomic, assign, readwrite) CGFloat fontDescent;
 @property (nonatomic, assign) CGFloat fontHeight;
 
 @property (nonatomic) CTFrameRef frameRef;
@@ -42,7 +42,7 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
     _lineBreakMode = kCTLineBreakByTruncatingTail;
     _textAlignment = kCTTextAlignmentLeft;
     
-    self.font = [UIFont systemFontOfSize:20.0f];
+    self.font = [UIFont systemFontOfSize:16.0f];
     _textColor = [UIColor blackColor];
     _linkBackgroundColor = [UIColor lightGrayColor];
     _linkColor = [UIColor colorWithRed:kColorVal(32) green:kColorVal(193) blue:kColorVal(220) alpha:1];
@@ -70,8 +70,9 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
 #pragma mark - Append Rich Text such as.. link, image or UIVIew
 
 - (void)appendItem:(XMAttributeItem *)item{
-    if (item.type == XMAttachmentItemTypeUnkown) {
-        NSLog(@"Unspport type of Item <%@>", item);
+    if (item.type == XMAttachmentItemTypeUnkown ||
+        item.type == XMAttachmentItemTypeLink) {
+        NSLog(@"Unspport type of Item to append it: <%@>", item);
     }else{
         [self appendAttachment:item];
     }
@@ -127,6 +128,7 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
     
     //draw link
     [self drawLinkBackground:contextRef inRect:rect lines:ctLines lineOrigins:lineOrigins];
+    [self drawImageBackground:contextRef];
     
     for (CFIndex i = 0; i < ctLinesCount; i++) {
         
@@ -163,12 +165,13 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
             if (item.autoSize) {//at least can't less than it's ascent + descent
                 height = lineHeight;
                 if (!width) width = item.fontAscent + item.fontDescent;
+                width = height = MAX(width, height);
             }
             
             CGRect finialRect = (CGRect){lineOrigin.x + offsetX + XMAttributeMargin,
-                                        lineBottomY,
+                                        lineBottomY + XMAttributeMargin,
                                         width - XMAttributeMargin * 2,
-                                        height};
+                                        height - XMAttributeMargin * 2};
             
             if (item.type == XMAttachmentItemTypeImage) {
                 finialRect.origin.y = finialRect.origin.y + (lineHeight - height) * 0.5;
@@ -189,6 +192,15 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
     
     //at last draw the text
     CTFrameDraw(_frameRef, contextRef);
+}
+
+- (void)drawImageBackground:(CGContextRef)context{
+    if (!self.acticeItem || self.acticeItem.type != XMAttachmentItemTypeImage) return;
+    
+    [self.linkBackgroundColor setFill];
+    CGRect rect = (CGRect){self.acticeItem.origin, self.acticeItem.size};
+    rect = CGRectInset(rect, - XMAttributeMargin, - XMAttributeMargin);
+    CGContextFillRect(context, rect);
 }
 
 - (void)drawLinkBackground:(CGContextRef)context inRect:(CGRect)rect lines:(CFArrayRef)lines lineOrigins:(CGPoint[])lineOrigins{
@@ -328,8 +340,35 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
 
 - (void)resetTextFrameAndRefreshScreen{
     XMAttributeLabelSafeRelease(_frameRef);
-    if ([NSThread isMainThread]) {
+
+    dispatch_async(dispatch_get_main_queue(), ^{
         [self setNeedsDisplay]; //will call the '- drawRect:' always draw code in main thread
+    });
+//    if ([NSThread isMainThread]) {
+//        [self setNeedsDisplay]; //will call the '- drawRect:' always draw code in main thread
+//    }
+}
+
+- (void)resetEmojiWithItem:(XMAttributeItem *)item{
+    //only for emoji
+    if (item.type == XMAttachmentItemTypeImage) {
+        NSMutableAttributedString *s = [self createStringWithAttachment:item];
+        NSRange range = [self modifyRangeWhereImageInFrontOfTheLinkWithItem:item];
+        //we need modify the
+        [(NSMutableAttributedString *)self.attributeText replaceCharactersInRange:range
+                                                             withAttributedString:s];
+        [self resetTextFrameAndRefreshScreen];
+        [self.attributeDict[XMImagesAttributeName] addObject:item];
+    }
+}
+
+- (void)resetLinkWithItem:(XMAttributeItem *)item{
+    //only for links
+    if (item.type == XMAttachmentItemTypeLink) {
+        //change the text color with the link color
+        [self setTextLinkStyleWithAttachment:item];
+        [self.attributeDict[XMLinksAttributeName] addObject:item];
+        [self resetTextFrameAndRefreshScreen];
     }
 }
 
@@ -348,11 +387,6 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
         [self appendAttributeText:replaceAttrString];
 
         [self.attributeDict[XMUIViewsAttributeName] addObject:attach];
-    }else if (attach.type == XMAttachmentItemTypeLink) {
-        //change the text color with the link color
-        [self setTextLinkStyleWithAttachment:attach];
-        [self.attributeDict[XMLinksAttributeName] addObject:attach];
-        [self resetTextFrameAndRefreshScreen];
     }
 }
 
@@ -378,24 +412,41 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
     return replaceAttrString;
 }
 
+#pragma mark - modify the range
+
+- (NSRange)modifyRangeWhereImageInFrontOfTheLinkWithItem:(XMAttributeItem *)attach{
+    NSUInteger modifyLocation = 0;
+    for (XMAttributeItem *it in self.attributeDict[XMImagesAttributeName]) {
+        if (it.linkRange.location > attach.linkRange.location) continue;
+        modifyLocation += it.linkRange.length - 1;
+    }
+    NSRange range = NSMakeRange(attach.linkRange.location - modifyLocation, attach.linkRange.length);
+    attach.linkRange = range;//modfiy the range
+    return range;
+}
+
 #pragma mark - The settings of text
 
-- (void)setTxetAttr:(NSMutableAttributedString *)text range:(NSRange)range value:(CFTypeRef)value key:(CFStringRef)key{
+- (void)setTxetAttr:(NSMutableAttributedString *)text range:(NSRange)range
+              value:(CFTypeRef)value key:(CFStringRef)key{
+    
     [text removeAttribute:(__bridge NSString *)key range:range];
     [text addAttribute:(__bridge NSString *)key value:(__bridge id)value range:range];
 }
 
 - (void)setTextLinkStyleWithAttachment:(XMAttributeItem *)attach{
     
+    NSRange range = [self modifyRangeWhereImageInFrontOfTheLinkWithItem:attach];
+    
     [self setTextColor:_linkColor.CGColor
-                 range:attach.linkRange
+                 range:range
                   text:(NSMutableAttributedString *)_attributeText];
     [self setTxetAttr:(NSMutableAttributedString *)_attributeText
-                range:attach.linkRange
+                range:range
                 value:_linkColor.CGColor
                   key:kCTUnderlineColorAttributeName];
     [self setTxetAttr:(NSMutableAttributedString *)_attributeText
-                range:attach.linkRange
+                range:range
                 value:(__bridge CFTypeRef)(@(attach.linkUnderline))
                   key:kCTUnderlineStyleAttributeName];
 }
@@ -450,11 +501,18 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
     CGPoint touchPoint = [touches.anyObject locationInView:self];
     XMAttributeItem *item = [self itemWithPoint:touchPoint];
 
-    if (item.type == XMAttachmentItemTypeLink){
+    if (item.type == XMAttachmentItemTypeLink || item.type == XMAttachmentItemTypeImage){
         self.acticeItem = item;
         [self resetTextFrameAndRefreshScreen];
     }
     
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (self.acticeItem) {
+        self.acticeItem = nil;
+        [self resetTextFrameAndRefreshScreen];
+    }
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -497,6 +555,7 @@ unichar const XMAttributedReplaceChar = 0xFFFC;
             
             CGPoint relativePoint = (CGPoint){touchPoint.x - CGRectGetMinX(rect), touchPoint.y - CGRectGetMinY(rect)};
             CFIndex index = CTLineGetStringIndexForPosition(eachLineRef, relativePoint);
+
             //for links first
             for (XMAttributeItem *item in _attributeDict[XMLinksAttributeName]) {
                 if (item.type == XMAttachmentItemTypeLink && NSLocationInRange(index, item.linkRange)) {
