@@ -12,8 +12,6 @@
 
 @interface SqliteHelper : NSObject
 
-+ (SqliteHelper *)defaultHelper;
-
 @property (nonatomic, strong, readonly) FMDatabaseQueue *databaseQueue;
 
 @property (nonatomic, strong, readonly) RegisterSqliteHelper *registerHelper;

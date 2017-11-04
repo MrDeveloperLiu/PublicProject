@@ -7,7 +7,7 @@
 //
 
 #import "RegisterSqliteHelper.h"
-#import "SqliteHelper.h"
+#import "ChatServerClient.h"
 
 @implementation RegisterSqliteHelper
 
@@ -17,7 +17,7 @@
 
 - (BOOL)initTable{
     __block BOOL ret = NO;
-    [[[SqliteHelper defaultHelper] databaseQueue] inDatabase:^(FMDatabase *db) {
+    [[[ChatServerClient server].dbHelper databaseQueue] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"create table if not exists %@ \
                          (userid integer primary key autoincrement,\
                          account text,\
@@ -31,7 +31,7 @@
 - (BOOL)deleteWithUserid:(uint64_t)userid{
     __block BOOL ret = NO;
     
-    [[[SqliteHelper defaultHelper] databaseQueue] inDatabase:^(FMDatabase *db) {
+    [[[ChatServerClient server].dbHelper databaseQueue] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"delete from %@ where userid = '%lld';", [self.class tableName], userid];
         ret = [db executeUpdate:sql];
     }];
@@ -42,7 +42,7 @@
 - (NSArray *)quaryWithAccount:(NSString *)account{
     NSMutableArray *temp = [NSMutableArray array];
     
-    [[[SqliteHelper defaultHelper] databaseQueue] inDatabase:^(FMDatabase *db) {
+    [[[ChatServerClient server].dbHelper databaseQueue] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"select * from %@ where account = '%@';", [self.class tableName], account];
         FMResultSet *set = [db executeQuery:sql];
         
@@ -60,7 +60,7 @@
 - (NSArray *)quaryWithUserid:(uint64_t)userid{
     NSMutableArray *temp = [NSMutableArray array];
     
-    [[[SqliteHelper defaultHelper] databaseQueue] inDatabase:^(FMDatabase *db) {
+    [[[ChatServerClient server].dbHelper databaseQueue] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"select * from %@ where userid = '%lld';", [self.class tableName], userid];
         FMResultSet *set = [db executeQuery:sql];
         
@@ -86,7 +86,7 @@
 
 - (BOOL)insertIntoTableWithAccount:(NSString *)account password:(NSString *)password state:(int)state{
     __block BOOL ret = NO;
-    [[[SqliteHelper defaultHelper] databaseQueue] inDatabase:^(FMDatabase *db) {
+    [[[ChatServerClient server].dbHelper databaseQueue] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"insert into %@ (account, password, state) values ('%@', '%@', '%d');", [self.class tableName], account, password, state];
         ret = [db executeUpdate:sql];
     }];
@@ -105,7 +105,7 @@
         if (password.length) and = @" and";
         changeState = [NSString stringWithFormat:@" state = '%d'", state];
     }
-    [[[SqliteHelper defaultHelper] databaseQueue] inDatabase:^(FMDatabase *db) {
+    [[[ChatServerClient server].dbHelper databaseQueue] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"update %@ set%@%@%@ where account = '%@';", [self.class tableName], chanegePassword, and, changeState, account];
         ret = [db executeUpdate:sql];
     }];
@@ -116,12 +116,7 @@
 @implementation RegisterModel
 
 - (void)setValue:(id)value forKey:(NSString *)key{
-    if ([key isEqualToString:NSStringFromSelector(@selector(userid))]) {
-        self.userid = [(NSNumber *)value longLongValue];
-    }
-    if ([key isEqualToString:NSStringFromSelector(@selector(state))]) {
-        self.state = [(NSNumber *)value intValue];
-    }
+    [super setValue:value forKey:key];
 }
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{}
 

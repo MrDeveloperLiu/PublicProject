@@ -57,11 +57,12 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
 
 #pragma mark - DISCONNECT
 - (BOOL)disconnectLocalSocket{
-    if (_socketFD) {//如果当前是服务自己断开的链接
+    if (_socketFD > 0) {//如果当前是服务自己断开的链接
         if (_accept4Source) {//清除 接受源
             dispatch_source_cancel(_accept4Source);
         }
         close(_socketFD);
+        LogTrace(@"local accept_source_cancel and close(%d) socket", _socketFD);
         _socketFD = -1;
         return YES;
     }
@@ -74,6 +75,7 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
             [self doDidConnected:connection.socketFD address:connection.remoteAddress];
         });
     }
+    LogTrace(@"disconnect all sockets");
     return [self disconnectLocalSocket];
 }
 
@@ -136,6 +138,7 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
         }else{//fail
             [ws doDidDisConnected:socketFD address:address error:[self connectFailedError]];
         }
+        [self endConnectTimer];
     });
     
     //begin connect to the host
@@ -246,7 +249,7 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
 }
 
 #pragma mark - CLOSE
-- (void)disconnect:(int)sock{
+- (CoreSocketConnection *)disconnect:(int)sock{
     //移除即释放
     if (_connectTimer) {
         dispatch_source_cancel(_connectTimer);
@@ -260,7 +263,9 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
     
     CoreSocketConnection *connection = [self connectionObjectForKey:@(sock)];
     [connection destoryHandle];
-    [self removeConnectionForKey:@(sock)];
+    
+    
+    return connection;
 }
 
 #pragma mark - ACCEPT
@@ -345,7 +350,6 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
 #pragma mark - CONNECT STATUS
 #pragma Did Connect
 - (BOOL)doDidConnected:(int)sockeFD address:(NSData *)address{
-    [self endConnectTimer];
     
     //set socket option
     int result = fcntl(sockeFD, F_SETFL, O_NONBLOCK);
@@ -362,26 +366,28 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
     setsockopt(sockeFD, SOL_SOCKET, SO_NOSIGPIPE, &nosigpipe, sizeof(nosigpipe));
     
     //set read and write
-    [self doSetWriteAndReadEventHandlerWithSocketFD:sockeFD address:address];
+    CoreSocketConnection *c = [self doSetWriteAndReadEventHandlerWithSocketFD:sockeFD address:address];
     
     NSString *host = [[self class] hostFromIPv4:address];
     NSInteger port = [[self class] portFromIPv4:address];
 
     LogTrace(@"socket did connect (%@:%d)", host, (int)port);
-    [self.delegate onCoreSocket:self didConnectToTheHost:host port:port];
+    [self.delegate onCoreSocket:self didConnectToTheHost:host port:port connection:c];
 
     return YES;
 }
 #pragma Did DisConnect
 - (void)doDidDisConnected:(int)sockFD address:(NSData *)address error:(NSError *)error{
     
-    [self disconnect:sockFD];
+    CoreSocketConnection *c = [self disconnect:sockFD];
+    LogTrace(@"disconnect and remove ref socket(%d)", sockFD);
+    [self removeConnectionForKey:@(sockFD)];
     
     NSString *host = [[self class] hostFromIPv4:address];
     NSInteger port = [[self class] portFromIPv4:address];
 
     LogTrace(@"socket did disconnected (%@:%d)", host, (int)port);
-    [self.delegate onCoreSocket:self disConnectToTheHost:host port:port error:error];
+    [self.delegate onCoreSocket:self disConnectToTheHost:host port:port error:error connection:c];
     
 }
 #pragma Did Accept
@@ -409,6 +415,7 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
         [self doDidDisConnected:socketFD
                         address:connection.remoteAddress
                           error:[self commonFailedErrorWithDesc:@"remote close() this connection"]];
+        LogTrace(@"dispatch_source_get_data bytesAvaliable = 0, close current socket, is must be server disconnect");
         return;
     }
     if (!self -> _currentRead) {
@@ -422,11 +429,11 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
         [self -> _currentRead readBuffer:buffer len:self -> _currentRead.readLength];
     }
     //read progress
-    [self.delegate onCoreSocket:self receiveData:self -> _currentRead];
+    [self.delegate onCoreSocket:self receiveData:self -> _currentRead connection:connection];
     //read finish
     if (self -> _currentRead.finish) {
         [self endReadTimer];
-        [self.delegate onCoreSocket:self receiveDone:self -> _currentRead];
+        [self.delegate onCoreSocket:self receiveDone:self -> _currentRead connection:connection];
         self -> _currentRead = nil;
     }
 }
@@ -452,7 +459,7 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
 }
 
 #pragma mark - SET READ AND WRITE
-- (void)doSetWriteAndReadEventHandlerWithSocketFD:(int)socketFD address:(NSData *)address{
+- (CoreSocketConnection *)doSetWriteAndReadEventHandlerWithSocketFD:(int)socketFD address:(NSData *)address{
     
     CoreSocketConnection *connection = [[CoreSocketConnection alloc] initWithSocketFD:socketFD
                                                                               address:address
@@ -460,6 +467,7 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
     [self addConnection:connection forKey:@(socketFD)];
     
     dispatch_resume(connection.readSource);
+    return connection;
 }
 #pragma mark - WRITE
 - (void)writeData:(NSData *)data timeOut:(NSTimeInterval)timeout{
@@ -545,5 +553,22 @@ NSErrorDomain const CoreSocketCommonFailedError = @"CoreSocketCommonFailedError"
     addr.sin_len                = sizeof(addr);
      
     return [NSData dataWithBytes:&addr length:sizeof(addr)];
+}
++ (NSData *)localAddressWithSocket:(int)socketFD{
+    
+    struct sockaddr_in addr;
+    memset(&addr, 0, sizeof(addr));
+    
+    socklen_t len;
+    int ret = getsockname(socketFD, (struct sockaddr *)&addr, &len);
+    if (0 == ret) {
+        
+    }else{
+    
+    }
+    return [NSData dataWithBytes:&addr length:len];
+}
+- (NSData *)localAddress{
+    return [[self class] localAddressWithSocket:_socketFD];
 }
 @end

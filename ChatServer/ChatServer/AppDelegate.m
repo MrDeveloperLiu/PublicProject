@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "CSReisgterViewController.h"
+#import "CSServerViewController.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +16,25 @@
 
 @implementation AppDelegate
 
++ (AppDelegate *)applicationDelegate{
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+#if kClientTypeIPhone
+    self.phoneClient = [[ChatiPhoneClient alloc] init];
+    self.window.rootViewController = [[CSReisgterViewController alloc] init];
+#else
+    self.serverClient = [ChatServerClient server];
+    self.window.rootViewController = [[CSServerViewController alloc] init];
+#endif
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

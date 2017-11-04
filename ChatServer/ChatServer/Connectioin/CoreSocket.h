@@ -30,17 +30,17 @@
 + (NSString *)hostFromIPv4:(NSData *)ipv4;
 + (NSData *)ipv4WithHost:(NSString *)host port:(NSUInteger)port;
 + (NSData *)anyIPv4AddressWithPort:(NSUInteger)port;
-
+- (NSData *)localAddress;
 @end
 
 
 @protocol CoreSocketDelegate <NSObject>
 @required
-- (void)onCoreSocket:(CoreSocket *)socket didConnectToTheHost:(NSString *)host port:(NSInteger)port;
-- (void)onCoreSocket:(CoreSocket *)socket disConnectToTheHost:(NSString *)host port:(NSInteger)port error:(NSError *)error;
+- (void)onCoreSocket:(CoreSocket *)socket didConnectToTheHost:(NSString *)host port:(NSInteger)port connection:(CoreSocketConnection *)connection;
+- (void)onCoreSocket:(CoreSocket *)socket disConnectToTheHost:(NSString *)host port:(NSInteger)port error:(NSError *)error connection:(CoreSocketConnection *)connection;
 
-- (void)onCoreSocket:(CoreSocket *)socket receiveData:(CoreSocketReadPacket *)packet;
-- (void)onCoreSocket:(CoreSocket *)socket receiveDone:(CoreSocketReadPacket *)packet;
+- (void)onCoreSocket:(CoreSocket *)socket receiveData:(CoreSocketReadPacket *)packet connection:(CoreSocketConnection *)connection;
+- (void)onCoreSocket:(CoreSocket *)socket receiveDone:(CoreSocketReadPacket *)packet connection:(CoreSocketConnection *)connection;
 
 - (void)onCoreSocket:(CoreSocket *)socket writeDidTimeOut:(CoreSocketWritePacket *)packet;
 - (void)onCoreSocket:(CoreSocket *)socket readDidTimeOut:(CoreSocketReadPacket *)packet;

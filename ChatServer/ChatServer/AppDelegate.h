@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+#define kClientTypeIPhone 0
+
+#import "ChatiPhoneClient.h"
+#import "ChatServerClient.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+
++ (AppDelegate *)applicationDelegate;
+
+@property (nonatomic, strong) ChatiPhoneClient *phoneClient;
+
+@property (nonatomic, strong) ChatServerClient *serverClient;
 
 @end
 

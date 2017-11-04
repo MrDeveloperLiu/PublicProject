@@ -20,7 +20,7 @@
 @interface CoreSocketReadPacket : CoreSocketPacket
 @property (nonatomic, assign, readonly) NSInteger maxLength;
 @property (nonatomic, assign, readonly) NSInteger readLength;
-@property (nonatomic, assign, readonly) NSInteger byteAvaliable;
+//@property (nonatomic, assign, readonly) NSInteger byteAvaliable;
 @property (nonatomic, assign, readonly) NSInteger offset;
 @property (nonatomic, assign) BOOL finish;
 
