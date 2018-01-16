@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+//client
 #import "ChatClient.h"
+//view
+#import "CSAlertView.h"
+//until
+#import "CSImageUntil.h"
+#import "CSUUIDUntil.h"
+
 
 @interface CSBaseViewController : UIViewController
 

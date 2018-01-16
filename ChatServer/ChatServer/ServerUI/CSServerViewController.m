@@ -9,6 +9,7 @@
 #import "CSServerViewController.h"
 #import "AppDelegate.h"
 #import "CSUserDefaultStore.h"
+#import "CSSocket.h"
 
 @interface CSServerViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -16,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *portTextField;
 @property (weak, nonatomic) IBOutlet UIButton *connectBtn;
 @property (weak, nonatomic) IBOutlet UITextView *infoTextView;
+
+@property (nonatomic, strong) CSSocket *socket;
 @end
 
 @implementation CSServerViewController
@@ -24,20 +27,29 @@
 }
 
 - (IBAction)connectionBtnAction:(id)sender {
-#if kClientTypeIPhone
-#else
+    
+    /*
     if (self.connectBtn.isSelected) {
+        
         if ([[AppDelegate applicationDelegate].serverClient endListen]) {
             self.connectBtn.selected = NO;
         }
+        
     }else{
         NSInteger port = [self.portTextField.text integerValue];
         [CSUserDefaultStore setPort:port];
+        
         if ([[AppDelegate applicationDelegate].serverClient beginListenToThePort:port]) {
             self.connectBtn.selected = YES;
         }
+    
     }
-#endif
+     */
+    
+    NSInteger port = [self.portTextField.text integerValue];
+    [CSUserDefaultStore setPort:port];
+    [self.socket acceptOnPort:port error:nil];
+
 }
 
 - (void)viewDidLoad {
@@ -51,9 +63,13 @@
     [ChatClient addObserver:self
                    selector:@selector(connectDisconnect:)
         forNotificationName:NotificationConnectionDisconnect];
-    [ChatClient addObserver:self
-                   selector:@selector(setImage:)
-        forNotificationName:@"IMAGE"];
+    
+//    [ChatClient addObserver:self
+//                   selector:@selector(setImage:)
+//        forNotificationName:@"IMAGE"];
+    
+    
+    self.socket = [[CSSocket alloc] initWithDelegate:self handleQueue:nil];
 }
 
 - (void)setImage:(NSNotification *)notif{

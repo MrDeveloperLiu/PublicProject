@@ -1,0 +1,13 @@
+/* 
+  ServerString.strings
+  ChatServer
+
+  Created by 刘杨 on 2017/11/4.
+  Copyright © 2017年 Married. All rights reserved.
+*/
+
+"CSAccountExist"="账号已经存在, 请重试";
+"CSAccountNull"="账号和密码不能为空";
+"CSPasswordWrong"="密码错误";
+"SCServerWrong"="服务错误";
+"SCUserNotExist"="该用户不存在";

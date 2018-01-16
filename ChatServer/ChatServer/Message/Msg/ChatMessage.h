@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "ChatMessageProtocol.h"
+#import "CSUUIDUntil.h"
 
 //message Type Key
 #define ChatMessageType             @"CM:MessageType"
-
+#define ChatMessageId               @"CM:MessageID"
 //message transport data
 #define ChatMessageBody             @"CM:MessageBody"
 #define ChatMessageBodyData         @"CM:MessageBodyData"
 #define ChatMessageBodyDataLength   @"CM:MessageBodyDataLength"
-
 //message Type
 #define ChatNoramlMessage           @"CM:NormalMessage"
 #define ChatResponseMessage         @"CM:ResponseMessage"

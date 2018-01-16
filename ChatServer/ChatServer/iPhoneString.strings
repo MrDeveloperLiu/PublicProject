@@ -1,0 +1,13 @@
+/* 
+  iPhoneString.strings
+  ChatServer
+
+  Created by 刘杨 on 2017/11/4.
+  Copyright © 2017年 Married. All rights reserved.
+*/
+"CSLoginSuccess"="登录成功";
+"CSLoginFail"="登录失败";
+
+"CSTabbarMessage"="信息";
+"CSTabbarContacts"="通讯录";
+"CSTabbarMe"="我的";

@@ -11,9 +11,13 @@
 #define CSUserDefaultStoreHost @"CM:Host"
 #define CSUserDefaultStorePort @"CM:Port"
 
+#define CSUserDefaultStoreUsername @"CM:Username"
+#define CSUserDefaultStorePassword @"CM:Password"
+
 @implementation CSUserDefaultStore
 + (void)setObject:(id)object forKey:(NSString *)key{
     [[NSUserDefaults standardUserDefaults] setObject:object forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 + (id)objectForKey:(NSString *)key{
     return [[NSUserDefaults standardUserDefaults] objectForKey:key];
@@ -33,6 +37,26 @@
 }
 + (NSInteger)port{
     return [[[self class] objectForKey:CSUserDefaultStorePort] integerValue];
+}
+
+
++ (void)setUsername:(NSString *)username{
+    [[self class] setObject:username forKey:CSUserDefaultStoreUsername];
+}
++ (NSString *)username{
+    return [[self class] objectForKey:CSUserDefaultStoreUsername];
+}
+
++ (void)setPassword:(NSString *)password{
+    NSData *data = [password dataUsingEncoding:NSASCIIStringEncoding];
+    [[self class] setObject:data forKey:CSUserDefaultStorePassword];
+}
++ (NSString *)password{
+    NSData *data = [[self class] objectForKey:CSUserDefaultStorePassword];
+    if (!data) {
+        return nil;
+    }
+    return [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 }
 
 @end

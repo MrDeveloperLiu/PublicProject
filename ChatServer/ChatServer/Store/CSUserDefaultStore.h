@@ -18,4 +18,9 @@
 + (void)setPort:(NSInteger)port;
 + (NSInteger)port;
 
++ (void)setUsername:(NSString *)username;
++ (NSString *)username;
+
++ (void)setPassword:(NSString *)password;
++ (NSString *)password;
 @end

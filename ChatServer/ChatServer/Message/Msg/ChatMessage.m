@@ -27,7 +27,9 @@
     self = [super init];
     if (self) {
         _internalData = data;
-        [self parseData];
+        if ([data length]) {
+            [self parseData];
+        }
     }
     return self;
 }
@@ -77,8 +79,7 @@
 }
 
 - (void)addHeader:(id)value forKey:(id)key{
-    if ([key isKindOfClass:[NSString class]] &&
-        [key isEqualToString:ChatMessageBody]) {
+    if ([key isEqualToString:ChatMessageBody]) {
         return;
     }
     if (key) {
@@ -110,6 +111,11 @@
     //addBodyIntoIt
     _chatHeader[ChatMessageType] = [(id <ChatMessageProtocol>)self messageType];
     _chatHeader[ChatMessageBody] = _chatBody;
+    //if not messageId then new messageId
+    if (![self headerForKey:ChatMessageId]) {
+        [self addHeader:[CSUUIDUntil uuidString] forKey:ChatMessageId];
+    }
+    
     @try {
         _jsonData = [NSJSONSerialization dataWithJSONObject:_chatHeader
                                         options:NSJSONWritingPrettyPrinted
