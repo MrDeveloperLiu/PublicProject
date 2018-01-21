@@ -58,13 +58,13 @@
                               0);
     
     __weak __typeof(self) ws = self;
-    dispatch_source_set_event_handler(timer, ^{
+    dispatch_source_set_event_handler(timer, ^{ CSAutoReleasePoolBegin
         [ws callEventCallback];
-    });
-    dispatch_source_set_cancel_handler(timer, ^{
+    CSAutoReleasePoolEnd });
+    dispatch_source_set_cancel_handler(timer, ^{ CSAutoReleasePoolBegin
         [ws callCancelCallback];
         timer = nil;
-    });
+    CSAutoReleasePoolEnd });
     [self setInternal:timer];
 }
 

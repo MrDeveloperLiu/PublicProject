@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "SqliteHelper.h"
 #import "ChatClient.h"
-#import "CSSocket.h"
+#import "ChatConnection.h"
 
 #define CSServerString(key) NSLocalizedStringFromTable(key, @"ServerString", nil)
+
+#define ChatServerStringNotification @"ChatServerStringNotification"
+#define ChatServerStringDidConnected @"ChatServerStringDidConnected"
+#define ChatServerStringDidDisconnected @"ChatServerStringDidDisconnected"
 
 @interface ChatServerClient : ChatClient <CSSocketDelegate>
 
@@ -19,6 +23,7 @@
 
 @property (nonatomic, strong, readonly) SqliteHelper *dbHelper;
 
-- (BOOL)beginListenToThePort:(NSInteger)port;
-- (BOOL)endListen;
+- (BOOL)beginListen:(NSUInteger)port;
+- (void)endListen;
+
 @end

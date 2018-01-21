@@ -30,13 +30,13 @@
     
     __block dispatch_source_t s = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ,
                                                          self.socket, 0, self.handleQueue);
-    dispatch_source_set_event_handler(s, ^{
+    dispatch_source_set_event_handler(s, ^{ CSAutoReleasePoolBegin
         [self callEventCallback];
-    });
-    dispatch_source_set_cancel_handler(s, ^{
+    CSAutoReleasePoolEnd });
+    dispatch_source_set_cancel_handler(s, ^{ CSAutoReleasePoolBegin
         [self callCancelCallback];
         s = nil;
-    });
+    CSAutoReleasePoolEnd });
     
     [self setInternal:s];
 }

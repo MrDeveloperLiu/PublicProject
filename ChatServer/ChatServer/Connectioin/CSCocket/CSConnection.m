@@ -154,6 +154,7 @@
 //收到一个新的包
 - (void)didBeginReceiveANewPack:(CSSocketReadPack *)pack{
     //do nothing
+    [self beginReadTimer];
 }
 //回调进度
 - (void)didReceivePack:(CSSocketReadPack *)pack progress:(double)progress{
@@ -163,6 +164,8 @@
 }
 //新报接受完成
 - (void)didReceivePackDone:(CSSocketReadPack *)pack{
+    [self cancelReadTimer];
+    
     if ([self.delegate respondsToSelector:@selector(connection:didReadDone:)]) {
         [self.delegate connection:self didReadDone:pack.receiveData];
     }
@@ -228,15 +231,17 @@
         [_writeQueue suspend];
         return;
     }
+    //begin timer
+    [self beginWriteTimer];
     //send and begin write timer
     ssize_t sendBytes = write(_socketFD,
                               ( const void *)[writePack.sendData bytes],
                               (size_t)[writePack.sendData length]);
     //end timer
+    [self cancelWriteTimer];
     if (sendBytes == 0) {
         //if send bytes 0 how to handle this?
     }
-    [self cancelWriteTimer];
     [_writeDatas removeObject:writePack];
     CSLogS(@"send %ld bytes, tag %ld", sendBytes, writePack.tag);
     
@@ -271,15 +276,11 @@
 
 //发送流
 - (unsigned long)write:(NSData *)data timeout:(NSTimeInterval)timeout{
-    //begin timer
-    [self beginWriteTimer];
     //write into queue
     CSSocketWritePack *writePack = [[CSSocketWritePack alloc] initWithTag:++ _writePackTag data:data];
     [_writeDatas addObject:writePack];
-    
-    
     //begin write queue
-    if (_writeDatas.count > 1) {
+    if (!_writeQueue.isRuning) {
         [_writeQueue resume];
     }
     return [data length];

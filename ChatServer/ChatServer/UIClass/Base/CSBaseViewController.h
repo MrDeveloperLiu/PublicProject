@@ -14,7 +14,7 @@
 //until
 #import "CSImageUntil.h"
 #import "CSUUIDUntil.h"
-
+#import "AppDelegate.h"
 
 @interface CSBaseViewController : UIViewController
 

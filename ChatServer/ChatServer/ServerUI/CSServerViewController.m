@@ -9,87 +9,85 @@
 #import "CSServerViewController.h"
 #import "AppDelegate.h"
 #import "CSUserDefaultStore.h"
-#import "CSSocket.h"
+#import "CSServerConnectedCell.h"
 
-@interface CSServerViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@interface CSServerViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *portTextField;
 @property (weak, nonatomic) IBOutlet UIButton *connectBtn;
-@property (weak, nonatomic) IBOutlet UITextView *infoTextView;
 
-@property (nonatomic, strong) CSSocket *socket;
+@property (nonatomic, strong) NSMutableDictionary *datas;
 @end
 
 @implementation CSServerViewController
+
 - (void)dealloc{
-    [ChatClient removeObserver:self];
+    
 }
 
 - (IBAction)connectionBtnAction:(id)sender {
-    
-    /*
-    if (self.connectBtn.isSelected) {
-        
-        if ([[AppDelegate applicationDelegate].serverClient endListen]) {
-            self.connectBtn.selected = NO;
-        }
-        
-    }else{
-        NSInteger port = [self.portTextField.text integerValue];
-        [CSUserDefaultStore setPort:port];
-        
-        if ([[AppDelegate applicationDelegate].serverClient beginListenToThePort:port]) {
-            self.connectBtn.selected = YES;
-        }
-    
-    }
-     */
-    
     NSInteger port = [self.portTextField.text integerValue];
     [CSUserDefaultStore setPort:port];
-    [self.socket acceptOnPort:port error:nil];
-
+    
+    if (self.connectBtn.isSelected) {
+        [[ChatServerClient server] endListen];
+        self.connectBtn.selected = NO;
+    }else{
+        [[ChatServerClient server] beginListen:port];
+        self.connectBtn.selected = YES;
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
  
     self.portTextField.text = @([CSUserDefaultStore port]).stringValue;
-
-    [ChatClient addObserver:self
-                         selector:@selector(connectDidConnect:)
-              forNotificationName:NotificationConnectionDidConnect];
-    [ChatClient addObserver:self
-                   selector:@selector(connectDisconnect:)
-        forNotificationName:NotificationConnectionDisconnect];
     
-//    [ChatClient addObserver:self
-//                   selector:@selector(setImage:)
-//        forNotificationName:@"IMAGE"];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight = 64;
     
+    [ChatClient addObserver:self selector:@selector(serverNotification:) forNotificationName:ChatServerStringNotification];
     
-    self.socket = [[CSSocket alloc] initWithDelegate:self handleQueue:nil];
+    self.datas = [NSMutableDictionary dictionary];
+    [self.tableView registerNib:[UINib nibWithNibName:[CSServerConnectedCell name] bundle:nil] forCellReuseIdentifier:[CSServerConnectedCell identifier]];
 }
 
-- (void)setImage:(NSNotification *)notif{
-    UIImage *image = [UIImage imageWithData:notif.object];
+- (void)serverNotification:(NSNotification *)notification{
+    NSString *method = notification.userInfo[@"method"];
+    if ([method isEqualToString:ChatServerStringDidConnected]) {
+        CSConnection *connection = notification.userInfo[@"connection"];
+        CSSocketAddress *address = [connection.address copy];
+        address.online = YES;
+        self.datas[[CSConnection connectionKey:address.socket]] = address;
+    }else if ([method isEqualToString:ChatServerStringDidDisconnected]){
+        CSConnection *connection = notification.userInfo[@"connection"];
+        CSSocketAddress *address = [connection.address copy];
+        CSSocketAddress *currentAddress = self.datas[[CSConnection connectionKey:address.socket]];
+        currentAddress.online = NO;
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.imageView.image = image;
+        [self.tableView reloadData];
     });
 }
 
-- (void)connectDidConnect:(NSNotification *)notif{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSString *address = notif.userInfo[@"address"];
-        self.infoTextView.text = [NSString stringWithFormat:@"%@%@", @"Connect To the: ", address];
-    });
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
-- (void)connectDisconnect:(NSNotification *)notif{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSString *address = notif.userInfo[@"address"];
-        self.infoTextView.text = [NSString stringWithFormat:@"%@%@", address, @" Disconnect"];
-    });
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.datas.allValues.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CSServerConnectedCell *cell = [tableView dequeueReusableCellWithIdentifier:[CSServerConnectedCell identifier] forIndexPath:indexPath];
+    CSSocketAddress *address = self.datas.allValues[indexPath.row];
+    cell.ipLabel.text = [NSString stringWithFormat:@"ip: %@", address.address];
+    cell.stateLabel.text = [NSString stringWithFormat:@"state: %@", address.online ? @"连接": @"断开"];
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

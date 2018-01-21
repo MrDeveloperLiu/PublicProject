@@ -10,14 +10,14 @@
 #import "ChatMessage.h"
 #import <CoreGraphics/CoreGraphics.h>
 #import "CSUserDefaultStore.h"
-#import "CSSocket.h"
+#import "ChatConnection.h"
 
 @class CSTcpRequestOperation;
-typedef void(^CSTcpRequestOperationProgressBlock)(CSTcpRequestOperation *operation, CGFloat progress);
+typedef void(^CSTcpRequestOperationProgressBlock)(CSTcpRequestOperation *operation, NSData *data, CGFloat progress);
 typedef void(^CSTcpRequestOperationCompletionBlock)(CSTcpRequestOperation *operation, ChatMessageResponse *resp);
 typedef void(^CSTcpRequestOperationFailedBlock)(CSTcpRequestOperation *operation, NSError *error);
 
-@interface CSTcpRequestOperation : CSBaseOperation <CSSocketDelegate>
+@interface CSTcpRequestOperation : CSBaseOperation
 
 @property (nonatomic, strong, readonly) ChatMessageRequest *request;
 

@@ -11,7 +11,9 @@
 #import <sys/socket.h>
 #import "CSFileLogger.h"
 
-@interface CSSocketAddress : NSObject
+@interface CSSocketAddress : NSObject <NSCopying>
+
+@property (nonatomic, assign) BOOL online;
 
 @property (nonatomic, assign, readonly) int socket;
 @property (nonatomic, strong, readonly) NSString *host;

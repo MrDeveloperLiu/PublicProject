@@ -30,12 +30,14 @@
         [self resetInternalSource];
     }
     BOOL ret = [super resume];
+    self.runing = ret;
     self.open = ret;
     return ret;
 }
 
 - (BOOL)cancel{
     BOOL ret = [super cancel];
+    self.runing = NO;
     self.open = NO;
     if (self.internal) {
         [self setInternal:nil];
@@ -45,7 +47,7 @@
 
 - (BOOL)suspend{
     BOOL ret = [super suspend];
-    self.open = NO;
+    self.runing = NO;
     return ret;
 }
 

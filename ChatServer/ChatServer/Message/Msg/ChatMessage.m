@@ -108,14 +108,10 @@
 
 - (NSData *)toMessage{
     NSError *error = nil;
-    //addBodyIntoIt
     _chatHeader[ChatMessageType] = [(id <ChatMessageProtocol>)self messageType];
-    _chatHeader[ChatMessageBody] = _chatBody;
-    //if not messageId then new messageId
-    if (![self headerForKey:ChatMessageId]) {
-        [self addHeader:[CSUUIDUntil uuidString] forKey:ChatMessageId];
+    if (_chatBody.allValues.count) {//addBodyIntoIt
+        _chatHeader[ChatMessageBody] = _chatBody;
     }
-    
     @try {
         _jsonData = [NSJSONSerialization dataWithJSONObject:_chatHeader
                                         options:NSJSONWritingPrettyPrinted

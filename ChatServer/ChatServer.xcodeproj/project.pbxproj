@@ -58,6 +58,10 @@
 		CDFFACBB200E34E4000E6016 /* CSBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFACB9200E34E4000E6016 /* CSBaseOperation.m */; };
 		CDFFACBF200E350B000E6016 /* ChatClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFACBE200E350B000E6016 /* ChatClient.m */; };
 		CDFFACC2200E384F000E6016 /* ChatConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFACC1200E384F000E6016 /* ChatConnection.m */; };
+		CDFFACC620136133000E6016 /* CSServerConnectedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFACC420136133000E6016 /* CSServerConnectedCell.m */; };
+		CDFFACC720136133000E6016 /* CSServerConnectedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDFFACC520136133000E6016 /* CSServerConnectedCell.xib */; };
+		CDFFACCB20146EF0000E6016 /* CSRegistAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFACC920146EF0000E6016 /* CSRegistAccountViewController.m */; };
+		CDFFACCC20146EF0000E6016 /* CSRegistAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDFFACCA20146EF0000E6016 /* CSRegistAccountViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +184,12 @@
 		CDFFACBE200E350B000E6016 /* ChatClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatClient.m; sourceTree = "<group>"; };
 		CDFFACC0200E384F000E6016 /* ChatConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatConnection.h; sourceTree = "<group>"; };
 		CDFFACC1200E384F000E6016 /* ChatConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatConnection.m; sourceTree = "<group>"; };
+		CDFFACC320136133000E6016 /* CSServerConnectedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSServerConnectedCell.h; sourceTree = "<group>"; };
+		CDFFACC420136133000E6016 /* CSServerConnectedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSServerConnectedCell.m; sourceTree = "<group>"; };
+		CDFFACC520136133000E6016 /* CSServerConnectedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CSServerConnectedCell.xib; sourceTree = "<group>"; };
+		CDFFACC820146EF0000E6016 /* CSRegistAccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSRegistAccountViewController.h; sourceTree = "<group>"; };
+		CDFFACC920146EF0000E6016 /* CSRegistAccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSRegistAccountViewController.m; sourceTree = "<group>"; };
+		CDFFACCA20146EF0000E6016 /* CSRegistAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CSRegistAccountViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +276,9 @@
 				CD0324D11FA7688D00878118 /* CSReisgterViewController.h */,
 				CD0324D21FA7688D00878118 /* CSReisgterViewController.m */,
 				CD0324D31FA7688D00878118 /* CSReisgterViewController.xib */,
+				CDFFACC820146EF0000E6016 /* CSRegistAccountViewController.h */,
+				CDFFACC920146EF0000E6016 /* CSRegistAccountViewController.m */,
+				CDFFACCA20146EF0000E6016 /* CSRegistAccountViewController.xib */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -276,6 +289,9 @@
 				CD0324E71FAC695C00878118 /* CSServerViewController.h */,
 				CD0324E81FAC695C00878118 /* CSServerViewController.m */,
 				CD0324E91FAC695C00878118 /* CSServerViewController.xib */,
+				CDFFACC320136133000E6016 /* CSServerConnectedCell.h */,
+				CDFFACC420136133000E6016 /* CSServerConnectedCell.m */,
+				CDFFACC520136133000E6016 /* CSServerConnectedCell.xib */,
 			);
 			path = ServerUI;
 			sourceTree = "<group>";
@@ -533,11 +549,11 @@
 		CDFFACAB200E34D7000E6016 /* ServerTable */ = {
 			isa = PBXGroup;
 			children = (
+				CDFFACAF200E34D7000E6016 /* RegisterSqliteHelper.h */,
 				CDFFACAC200E34D7000E6016 /* RegisterSqliteHelper.m */,
 				CDFFACAD200E34D7000E6016 /* LoginStateSqliteHelper.m */,
-				CDFFACAE200E34D7000E6016 /* SqliteHelper.h */,
-				CDFFACAF200E34D7000E6016 /* RegisterSqliteHelper.h */,
 				CDFFACB0200E34D7000E6016 /* LoginStateSqliteHelper.h */,
+				CDFFACAE200E34D7000E6016 /* SqliteHelper.h */,
 				CDFFACB1200E34D7000E6016 /* SqliteHelper.m */,
 			);
 			path = ServerTable;
@@ -547,8 +563,8 @@
 			isa = PBXGroup;
 			children = (
 				CDFFACB6200E34E4000E6016 /* CSTcpRequestOperation.h */,
-				CDFFACB7200E34E4000E6016 /* CSBaseOperation.h */,
 				CDFFACB8200E34E4000E6016 /* CSTcpRequestOperation.m */,
+				CDFFACB7200E34E4000E6016 /* CSBaseOperation.h */,
 				CDFFACB9200E34E4000E6016 /* CSBaseOperation.m */,
 			);
 			path = ReqeustOperation;
@@ -692,10 +708,12 @@
 			files = (
 				CD0325071FADA6D800878118 /* iPhoneString.strings in Resources */,
 				CD349D521F5ADFE3002E4987 /* LaunchScreen.storyboard in Resources */,
+				CDFFACC720136133000E6016 /* CSServerConnectedCell.xib in Resources */,
 				CD0325051FADA6CB00878118 /* ServerString.strings in Resources */,
 				CD0DE82C1FD2BDB000C90E51 /* ICON.bundle in Resources */,
 				CD349D4F1F5ADFE3002E4987 /* Assets.xcassets in Resources */,
 				CD0324D51FA7688D00878118 /* CSReisgterViewController.xib in Resources */,
+				CDFFACCC20146EF0000E6016 /* CSRegistAccountViewController.xib in Resources */,
 				CD0324EB1FAC695C00878118 /* CSServerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,6 +789,7 @@
 			files = (
 				CDFFACA5200E1F2E000E6016 /* CoreSocket.m in Sources */,
 				CDFFACC2200E384F000E6016 /* ChatConnection.m in Sources */,
+				CDFFACCB20146EF0000E6016 /* CSRegistAccountViewController.m in Sources */,
 				CD0325031FAD9E1600878118 /* CSAlertView.m in Sources */,
 				CD0DE8771FF69F8300C90E51 /* CSGCDAccept.m in Sources */,
 				CD0324CD1FA7684C00878118 /* CSBaseViewController.m in Sources */,
@@ -789,6 +808,7 @@
 				CD0DE8731FF69EF200C90E51 /* CSSocketAddress.m in Sources */,
 				CD0DE8451FF62FBB00C90E51 /* CSFileUntil.m in Sources */,
 				CDF88A391FD295A500CA662E /* CSNavigationController.m in Sources */,
+				CDFFACC620136133000E6016 /* CSServerConnectedCell.m in Sources */,
 				CD0DE8801FF6A46000C90E51 /* CSConnectSocket.m in Sources */,
 				CD349D471F5ADFE3002E4987 /* AppDelegate.m in Sources */,
 				CDFFACBB200E34E4000E6016 /* CSBaseOperation.m in Sources */,
@@ -897,7 +917,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -939,7 +959,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -953,7 +973,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4ENJEYX49Q;
 				INFOPLIST_FILE = ChatServer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liuyang.ChatServer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -967,7 +987,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4ENJEYX49Q;
 				INFOPLIST_FILE = ChatServer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.liuyang.ChatServer;
 				PRODUCT_NAME = "$(TARGET_NAME)";

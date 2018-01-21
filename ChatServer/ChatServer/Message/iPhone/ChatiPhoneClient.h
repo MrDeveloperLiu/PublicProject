@@ -9,21 +9,21 @@
 #import "ChatClient.h"
 #import "CSTcpRequest.h"
 #import "ChatiPhoneCallbackProtocol.h"
-#import "CSSocket.h"
+#import "ChatConnection.h"
 
 #define CSIPhoneString(key) NSLocalizedStringFromTable(key, @"iPhoneString", nil)
 
-
-@interface ChatiPhoneClient : ChatClient <CSSocketDelegate>
-
+@interface ChatiPhoneClient : ChatClient
 
 @property (nonatomic, strong, readonly) NSOperationQueue *requestQueue;
+- (CSTcpRequest *)tcpRequestWithChatMessageRequest:(ChatMessageRequest *)request;
+
++ (ChatiPhoneClient *)iPhone;
 
 - (BOOL)connectToTheHost:(NSString *)host port:(NSInteger)port;
 - (void)disconnect;
 
-- (CSTcpRequest *)tcpRequestWithChatMessageRequest:(ChatMessageRequest *)request;
-
 - (void)doLoginWithRequest:(ChatMessageRequest *)request completion:(id <ChatiPhoneCallbackProtocol>)completion;
 - (void)doLogoffWithRequest:(ChatMessageRequest *)request completion:(id <ChatiPhoneCallbackProtocol>)completion;
+
 @end

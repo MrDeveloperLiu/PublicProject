@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define kClientTypeIPhone 0
+#define kClientTypeIPhone 1
 
 #import "ChatiPhoneClient.h"
 #import "ChatServerClient.h"

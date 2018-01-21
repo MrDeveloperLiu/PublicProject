@@ -10,6 +10,16 @@
 
 @implementation CSSocketAddress
 
+- (id)copyWithZone:(NSZone *)zone{
+    CSSocketAddress *address = [[CSSocketAddress allocWithZone:zone] init];
+    address -> _socket = self.socket;
+    address -> _addrData = [self.addrData copy];
+    address -> _host = [self.host copy];
+    address -> _port = [self.port copy];
+    address -> _address = [self.address copy];
+    return address;
+}
+
 - (NSString *)description{
     return [NSString stringWithFormat:@"<%@> : %@", NSStringFromClass([self class]), _address];
 }
