@@ -7,6 +7,7 @@
 //
 
 #import "ChatConnection.h"
+#import "ChatClient.h"
 
 @interface ChatConnection () <CSSocketDelegate>
 
@@ -46,20 +47,36 @@
     [_socket writeData:message.toMessage timeOut:10];
 }
 
-- (void)sendRequest:(ChatMessageRequest *)request{
+- (void)sendRequest:(ChatMessage *)request{
     [_socket writeData:request.toMessage timeOut:10];
 }
-- (void)sendResponse:(ChatMessageResponse *)response{
+- (void)sendResponse:(ChatMessage *)response{
     [_socket writeData:response.toMessage timeOut:10];
 }
 
-- (void)sendResponse:(ChatMessageResponse *)response toConnection:(CSConnection *)connetion{
+- (void)sendResponse:(ChatMessage *)response toConnection:(CSConnection *)connetion{
+    [_socket writeData:response.toMessage timeOut:10 socket:connetion.socketFD];
+}
+
+- (void)sendResponseErrorReason:(NSString *)reason toConnection:(CSConnection *)connetion{
+    ChatMessage *response = [[ChatMessage alloc] init];
+    response.responseCode = ChatResponseError;
+    if (reason) {
+        [response addHeader:reason forKey:@"Reason"];
+    }
+    [_socket writeData:response.toMessage timeOut:10 socket:connetion.socketFD];
+}
+
+- (void)sendResponseCode:(ChatResponseCode)responseCode addMessageId:(ChatMessage *)request toConnection:(CSConnection *)connetion{
+    ChatMessage *response = [[ChatMessage alloc] init];
+    response.responseCode = responseCode;
+    if (request) {
+        [ChatClient __innerGetMessageIdWithRequest:request toResponse:response];
+    }
     [_socket writeData:response.toMessage timeOut:10 socket:connetion.socketFD];
 }
 - (void)sendResponseCode:(ChatResponseCode)responseCode toConnection:(CSConnection *)connetion{
-    ChatMessageResponse *response = [[ChatMessageResponse alloc] init];
-    response.responseCode = responseCode;
-    [_socket writeData:response.toMessage timeOut:10 socket:connetion.socketFD];
+    [self sendResponseCode:responseCode addMessageId:nil toConnection:connetion];
 }
 
 - (void)disconnect{

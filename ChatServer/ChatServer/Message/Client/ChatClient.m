@@ -28,17 +28,58 @@
 
 #pragma mark - Private Method
 //set failed
-- (void)__failedWithResponse:(ChatMessageResponse *)response reason:(NSString *)reason{
-    response.responseCode = ChatResponseUnAvaiable;
++ (void)__failedWithResponse:(ChatMessage *)response reason:(NSString *)reason{
     [response addHeader:reason forKey:@"Reason"];
 }
-- (void)__innerGetMessageIdWithRequest:(ChatMessageRequest *)request toResponse:(ChatMessageResponse *)response{
++ (void)__innerGetMessageIdWithRequest:(ChatMessage *)request toResponse:(ChatMessage *)response{
+    [response addHeader:[request headerForKey:@"Method"] forKey:@"Method"];
     [response addHeader:[request headerForKey:@"Event"] forKey:@"Event"];
-    [response addHeader:[request headerForKey:ChatMessageId] forKey:ChatMessageId];
+    [response addHeader:[request headerForKey:ChatMessageIdKey] forKey:ChatMessageIdKey];
 }
-- (void)__innerGetMessageIdWithResponse:(ChatMessageResponse *)response toResponse:(ChatMessageResponse *)receiveResponse{
++ (void)__innerGetMessageIdWithResponse:(ChatMessage *)response toResponse:(ChatMessage *)receiveResponse{
+    [response addHeader:[receiveResponse headerForKey:@"Method"] forKey:@"Method"];
     [response addHeader:[receiveResponse headerForKey:@"Event"] forKey:@"Event"];
-    [response addHeader:[receiveResponse headerForKey:ChatMessageId] forKey:ChatMessageId];
+    [response addHeader:[receiveResponse headerForKey:ChatMessageIdKey] forKey:ChatMessageIdKey];
+}
+
+- (instancetype)init{
+    if (self = [super init]) {
+        _managers = [NSMutableDictionary dictionary];
+    }
+    return self;
+}
+- (BOOL)openDatabase{
+    BOOL ret = NO;
+    for (id <ChatClientProtocol> manager in [self.managers allValues]) {
+        if ([manager respondsToSelector:@selector(openDatabase)]) {
+            ret = [manager openDatabase];
+        }
+    }
+    return ret;
+}
+- (BOOL)updateDatabase{
+    BOOL ret = NO;
+    for (id <ChatClientProtocol> manager in [self.managers allValues]) {
+        if ([manager respondsToSelector:@selector(updateDatabase)]) {
+            ret = [manager updateDatabase];
+        }
+    }
+    return ret;
+}
+
+- (void)registerManagers{
+
+}
+
+- (BOOL)registerManager:(id <ChatClientProtocol>)manager forKey:(NSString *)key{
+    if ([key isKindOfClass:[NSString class]]) {
+        self.managers[key] = manager;
+        return YES;
+    }
+    return NO;
+}
+- (id <ChatClientProtocol>)managerForKey:(NSString *)key{
+    return self.managers[key];
 }
 
 @end

@@ -17,8 +17,11 @@
 
 - (NSString *)description{
     NSMutableString *desc = [NSMutableString stringWithFormat:@"<%@> : { \r", NSStringFromClass([self class])];
-    [desc appendFormat:@" socket:%d \r address:%@ \r readPackTag:%d \r writePackTag:%d \r",
-     _socketFD, _address.address, _readPackTag, _writePackTag];
+    [desc appendFormat:@" socket:%d \r address:%@ \r readPackTag:%d \r writePackTag:%d ",
+     _socketFD,
+     _address.address,
+     _readPackTag,
+     _writePackTag];
     [desc appendFormat:@"\r }"];
     return desc;
 }

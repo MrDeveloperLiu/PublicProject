@@ -13,7 +13,7 @@
 #import "CSRegistAccountViewController.h"
 
 
-@interface CSReisgterViewController () <ChatiPhoneCallbackProtocol>
+@interface CSReisgterViewController () 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UITextField *hostTextField;
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
@@ -44,20 +44,48 @@
     [CSUserDefaultStore setHost:host];
     [CSUserDefaultStore setPort:port];
  
-    ChatMessageRequest *request = [[ChatMessageRequest alloc] init];
+    NSString *account = self.accountTextField.text;
+    NSString *password = self.passwordTextField.text;
+    
+    if (!account.length) {
+        [CSAlertView showAlert:@"请输入用户名" delay:2];
+        return;
+    }
+    if (!password.length) {
+        [CSAlertView showAlert:@"请输入密码" delay:2];
+        return;
+    }
+    
+    ChatMessage *request = [[ChatMessage alloc] init];
     [request setMethod:ChatRequestMethodPOST];
     [request addHeader:@"Login" forKey:@"Method"];
-    CSTcpRequest *req = [[ChatiPhoneClient iPhone] tcpRequestWithChatMessageRequest:request];
-    [req setFinshedBlock:^(CSTcpRequestOperation *operation, ChatMessageResponse *resp) {
-        CSLogI(@"%@", resp);
+    
+    [request addHeader:@"Reconnect" forKey:@"Event"];
+    [request addHeader:@"100000001" forKey:@"UserId"];
+    [request addHeader:@"Code" forKey:@"EncryptCode"];
+    /*
+     NSString *userId = [request headerForKey:@"UserId"];
+     NSString *encryptCode = [request headerForKey:@"EncryptCode"];
+
+    [request addHeader:account forKey:@"Account"];
+    [request addHeader:password forKey:@"Password"];
+    */
+    CSTcpRequest *req = [[ChatiPhoneClient iPhone] tcpRequestWithChatMessage:request];
+    [req setFinshedBlock:^(CSTcpRequestOperation *operation, ChatMessage *resp) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (resp.responseCode == ChatResponseOK) {
+                [AppDelegate applicationDelegate].window.rootViewController =
+                [[CSTabBarController alloc] init];
+            }else{
+                [CSAlertView showAlert:[resp headerForKey:@"Reason"] delay:2];
+            }
+        });
     }];
     [req setFailedBlock:^(CSTcpRequestOperation *operation, NSError *error) {
         CSLogI(@"%@", error);
     }];
     [req resume];
-}
 
-- (void)onResponse:(ChatMessageResponse *)resp userInfo:(NSDictionary *)userInfo{
 }
 
 - (IBAction)registerBtnAction:(id)sender {

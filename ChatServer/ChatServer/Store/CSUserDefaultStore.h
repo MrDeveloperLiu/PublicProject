@@ -18,6 +18,9 @@
 + (void)setPort:(NSInteger)port;
 + (NSInteger)port;
 
++ (void)setUserId:(NSString *)userId;
++ (NSString *)userId;
+
 + (void)setUsername:(NSString *)username;
 + (NSString *)username;
 

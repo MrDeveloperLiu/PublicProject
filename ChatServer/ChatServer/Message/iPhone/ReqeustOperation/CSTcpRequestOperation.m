@@ -10,7 +10,7 @@
 
 @interface CSTcpRequestOperation ()
 @property (nonatomic, strong) CSGCDTimer *timer;
-@property (nonatomic, strong) ChatMessageRequest *request;
+@property (nonatomic, strong) ChatMessage *request;
 @property (nonatomic, strong) ChatConnection *connection;
 @end
 
@@ -23,7 +23,7 @@
     _failedBlock = nil;
 }
 
-- (instancetype)initWithRequest:(ChatMessageRequest *)request{
+- (instancetype)initWithRequest:(ChatMessage *)request{
     if (self = [super init]) {
         _request = request;
         _connection = [[ChatConnection alloc] initWithQueue:nil type:ChatConnectionTypeClient];
@@ -59,7 +59,7 @@
     }
 }
 - (void)connection:(ChatConnection *)connection socket:(CSConnection *)socket data:(NSData *)data{
-    ChatMessageResponse *resp = [[ChatMessageResponse alloc] initWithData:data];
+    ChatMessage *resp = [[ChatMessage alloc] initWithData:data];
     [self callFinish:resp];
     [_connection disconnect];
 }
@@ -88,7 +88,7 @@
     }
     self.finished = YES;
 }
-- (void)callFinish:(ChatMessageResponse *)resp{
+- (void)callFinish:(ChatMessage *)resp{
     if (self.finshedBlock) {
         self.finshedBlock(self, resp);
         self.finshedBlock = nil;

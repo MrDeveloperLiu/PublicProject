@@ -22,7 +22,7 @@
     return self;
 }
 
-- (ChatMessageRequest *)request{
+- (ChatMessage *)request{
     return _operation.request;
 }
 

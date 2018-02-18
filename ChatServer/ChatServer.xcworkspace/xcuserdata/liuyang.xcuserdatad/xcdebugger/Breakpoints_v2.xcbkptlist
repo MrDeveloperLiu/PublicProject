@@ -105,13 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatServer/UIClass/Register/CSReisgterViewController.m"
-            timestampString = "538211199.899457"
+            filePath = "ChatServer/Message/Msg/ChatMessage.m"
+            timestampString = "540653592.099931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "-loginBtnAction:"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-parseData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -121,45 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatServer/UIClass/Register/CSReisgterViewController.m"
-            timestampString = "538211199.899667"
+            filePath = "ChatServer/Message/Msg/ChatMessage.m"
+            timestampString = "540653592.100118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-loginBtnAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatServer/UIClass/Register/CSReisgterViewController.m"
-            timestampString = "538211199.8997869"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-loginBtnAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatServer/Message/Server/ChatServerClient.m"
-            timestampString = "538211199.8999031"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-connection:socket:data:"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-toMessage"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

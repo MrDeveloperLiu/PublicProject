@@ -11,7 +11,7 @@
 
 @interface CSTcpRequest : NSObject
 
-@property (nonatomic, strong, readonly) ChatMessageRequest *request;
+@property (nonatomic, strong, readonly) ChatMessage *request;
 
 - (instancetype)initWithCSTcpRequestOperation:(CSTcpRequestOperation *)operation;
 

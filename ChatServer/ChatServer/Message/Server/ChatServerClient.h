@@ -10,12 +10,15 @@
 #import "SqliteHelper.h"
 #import "ChatClient.h"
 #import "ChatConnection.h"
-
-#define CSServerString(key) NSLocalizedStringFromTable(key, @"ServerString", nil)
+#import "ChatServerProtocol.h"
 
 #define ChatServerStringNotification @"ChatServerStringNotification"
 #define ChatServerStringDidConnected @"ChatServerStringDidConnected"
 #define ChatServerStringDidDisconnected @"ChatServerStringDidDisconnected"
+
+#define CSServerString(key) NSLocalizedStringFromTable(key, @"ServerString", nil)
+#define CSRegisterDatabase [[[ChatServerClient server] dbHelper] registerHelper]
+
 
 @interface ChatServerClient : ChatClient <CSSocketDelegate>
 
@@ -23,7 +26,11 @@
 
 @property (nonatomic, strong, readonly) SqliteHelper *dbHelper;
 
++ (void)inDatabase:(void (^)(FMDatabase *db))database;
 - (BOOL)beginListen:(NSUInteger)port;
 - (void)endListen;
+
+- (BOOL)registerManager:(id <ChatServerProtocol>)manager forKey:(NSString *)key;
+- (id <ChatServerProtocol>)managerForKey:(NSString *)key;
 
 @end

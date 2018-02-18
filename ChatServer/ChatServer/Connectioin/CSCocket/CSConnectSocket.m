@@ -142,6 +142,7 @@
     if (_connectTimer) {
         [_connectTimer cancel];
     }
+    [self closeSocket:_socket];//close socket
 }
 
 - (void)startConnectToAddress:(NSData *)address timeout:(NSTimeInterval)timeout{

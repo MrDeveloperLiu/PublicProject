@@ -11,6 +11,7 @@
 #define CSUserDefaultStoreHost @"CM:Host"
 #define CSUserDefaultStorePort @"CM:Port"
 
+#define CSUserDefaultStoreUserId @"CM:UserId"
 #define CSUserDefaultStoreUsername @"CM:Username"
 #define CSUserDefaultStorePassword @"CM:Password"
 
@@ -24,6 +25,12 @@
 }
 
 
++ (void)setUserId:(NSString *)userId{
+    [[self class] setObject:userId forKey:CSUserDefaultStoreUserId];
+}
++ (NSString *)userId{
+    return [[self class] objectForKey:CSUserDefaultStoreUserId];
+}
 
 + (void)setHost:(NSString *)host{
     [[self class] setObject:host forKey:CSUserDefaultStoreHost];

@@ -49,11 +49,13 @@ typedef void(^ChatConnectionReadTimeoutBlock)(ChatConnection *connection, CSConn
 
 - (void)sendMessage:(ChatMessage *)message;
 
-- (void)sendRequest:(ChatMessageRequest *)request;
-- (void)sendResponse:(ChatMessageResponse *)response;
+- (void)sendRequest:(ChatMessage *)request;
+- (void)sendResponse:(ChatMessage *)response;
 
-- (void)sendResponse:(ChatMessageResponse *)response toConnection:(CSConnection *)connetion;
-- (void)sendResponseCode:(ChatResponseCode)responseCode toConnection:(CSConnection *)connetion;;
+- (void)sendResponse:(ChatMessage *)response toConnection:(CSConnection *)connetion;
+- (void)sendResponseCode:(ChatResponseCode)responseCode toConnection:(CSConnection *)connetion;
+- (void)sendResponseCode:(ChatResponseCode)responseCode addMessageId:(ChatMessage *)request toConnection:(CSConnection *)connetion;
+- (void)sendResponseErrorReason:(NSString *)reason toConnection:(CSConnection *)connetion;
 
 - (void)disconnect;
 - (BOOL)disconnectConnection:(CSConnection *)connection;

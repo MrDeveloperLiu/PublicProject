@@ -19,9 +19,10 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if (![self.viewControllers containsObject:viewController]) {
+        [super pushViewController:viewController animated:animated];
+    }
 }
 
 /*

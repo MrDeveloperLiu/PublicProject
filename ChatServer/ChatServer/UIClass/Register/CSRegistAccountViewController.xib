@@ -41,6 +41,9 @@
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="inputAccount:" destination="-1" eventType="editingDidBegin" id="M4a-Pz-l4r"/>
+                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wF1-be-Sre">
                     <rect key="frame" x="231" y="87" width="128" height="30"/>
@@ -48,6 +51,12 @@
                     <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="验证是否被占用"/>
+                    <state key="disabled" title="账号已被占用">
+                        <color key="titleColor" red="0.093418605625629425" green="0.65712398290634155" blue="0.15920594334602356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected" title="可以使用该账号">
+                        <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="acountBtnAction:" destination="-1" eventType="touchUpInside" id="8Fl-pz-Zfi"/>
                     </connections>

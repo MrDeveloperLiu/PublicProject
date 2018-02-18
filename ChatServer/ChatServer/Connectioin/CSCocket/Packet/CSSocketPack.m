@@ -65,8 +65,7 @@
     if (pack.tag != self.tag) {
         return NO;
     }
-
-    [self.receiveData appendData:pack.receiveData];
+    [self appendData:pack.receiveData];
     return YES;
 }
 
